@@ -1,5 +1,43 @@
 {
-    "name": "export-service",
+    "author": {
+        "name": "BALKANGraph"
+    },
+    "bugs": {
+    "email": "support@balkangraph.com",
+    "url": "https://github.com/BALKANGraph/export-service/issues"
+    },
+    "files": [
+        "app.js",
+        "package.json",
+        "README.md"
+    ],
+    "homepage": "https://balkangraph.com/",
+    "keywords": [
+        "diagram",
+        "chart",
+        "tree",
+        "orgchart",
+        "graph",
+        "svg",
+        "hierarchy",
+        "family-tree",
+        "decision-tree",
+        "visualization",
+        "tree-layout",
+        "hierarchical",
+        "javascript",
+        "js",
+        "html",
+        "html5"
+    ],
+    "license": "SEE LICENSE IN https://balkangraph.com",
+    "main": "app.js",
+    "name": "@balkangraph/export-service",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BALKANGraph/export-service"
+    },
+    "version": "1.0.0",
     "dependencies": {
         "file-url": "^2.0.2",
         "puppeteer": "^1.13.0",
@@ -8,3 +46,6 @@
         "xml-parse": "^0.3.1"
     }
 }
+
+
+  
