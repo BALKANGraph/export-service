@@ -1,0 +1,10 @@
+{
+    "name": "export-service",
+    "dependencies": {
+        "file-url": "^2.0.2",
+        "puppeteer": "^1.13.0",
+        "uuid": "^3.3.2",
+        "winston": "^3.2.1",
+        "xml-parse": "^0.3.1"
+    }
+}
