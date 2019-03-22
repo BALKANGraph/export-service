@@ -32,7 +32,7 @@
         "html5"
     ],
     "scripts": { "start": "node app.js"},
-    "license": "SEE LICENSE IN https://balkangraph.com",
+    "license": "https://balkangraph.com/EndUserLicenseAgreement.pdf",
     "main": "app.js",
     "name": "@balkangraph/export-service",
     "repository": {
