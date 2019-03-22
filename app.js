@@ -45,6 +45,18 @@ http.createServer(function (req, res) {
 }).listen(port);
 
 function clear(res) {  
+    var dir = './appdata';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    dir = './logs';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
     fs.readdir(APP_DATA, (err, files) => {
         if (err) {
             l.error(JSON.stringify(err));
