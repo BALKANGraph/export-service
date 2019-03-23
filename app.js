@@ -1,7 +1,7 @@
 'use strict';
 var port = process.env.PORT || 1337;
 const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
-const APP_DATA = "./appdata";
+const APP_DATA = "/appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
 const ONE_HOUR = 60 * 60 * 1000; /* ms */
 const PADDING = 5;
@@ -41,19 +41,13 @@ http.createServer(function (req, res) {
 }).listen(port);
 
 function clear(res) {  
-    var dir = './appdata';
+    var dir = `${__dirname}${APP_DATA}`;
 
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
 
-    dir = './logs';
-
-    if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir);
-    }
-
-    fs.readdir(APP_DATA, (err, files) => {
+    fs.readdir(dir, (err, files) => {
         if (err) {
             l.error(JSON.stringify(err));
             res.writeHead(404);
@@ -74,7 +68,7 @@ function clear(res) {
             var d = new Date(dtarray[0], dtarray[1], dtarray[2], dtarray[3], dtarray[4], dtarray[5]);
             var now = new Date();
 
-            var filename = `${APP_DATA}/${file}`;
+            var filename = `${__dirname}${APP_DATA}/${file}`;
 
             if (((now - d) < ONE_HOUR)){
                 l.debug(`file ${filename} is less then one hour old and will not be deleted!`);
@@ -92,6 +86,12 @@ function clear(res) {
             });
         });
     });
+
+    dir = './logs';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
 }
 
 function servre(req, res) {   
@@ -137,9 +137,9 @@ function convert(req, res, type) {
             + "-" + d.getMinutes()
             + "-" + d.getSeconds()
         
-        var filenameSvg = `${APP_DATA}/${d}+${filename}.svg`; 
-        var filenameSvgUrl = href + `/appdata/${d}+${filename}.svg`;
-        var filenameConverted = `${APP_DATA}/${d}+${filename}.${type}`; 
+        var filenameSvg = `${__dirname}${APP_DATA}/${d}+${filename}.svg`; 
+        var filenameSvgUrl = href + `${APP_DATA}/${d}+${filename}.svg`;
+        var filenameConverted = `${__dirname}${APP_DATA}/${d}+${filename}.${type}`; 
 
         fs.writeFile(filenameSvg, data.svg, function(err) {
             if(err) {
