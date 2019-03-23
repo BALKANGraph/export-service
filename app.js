@@ -1,7 +1,7 @@
 'use strict';
 var port = process.env.PORT || 1337;
 const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
-const APP_DATA = "appdata";
+const APP_DATA = "./appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
 const ONE_HOUR = 60 * 60 * 1000; /* ms */
 const PADDING = 5;

@@ -3,8 +3,8 @@
         "name": "BALKANGraph"
     },
     "bugs": {
-    "email": "support@balkangraph.com",
-    "url": "https://github.com/BALKANGraph/export-service/issues"
+        "email": "support@balkangraph.com",
+        "url": "https://github.com/BALKANGraph/export-service/issues"
     },
     "files": [
         "app.js",
@@ -31,7 +31,9 @@
         "html",
         "html5"
     ],
-    "scripts": { "start": "node app.js"},
+    "scripts": {
+        "start": "node app.js"
+    },
     "license": "https://balkangraph.com/EndUserLicenseAgreement.pdf",
     "main": "app.js",
     "name": "@balkangraph/export-service",
@@ -39,7 +41,7 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.0.4",
+    "version": "1.0.5",
     "dependencies": {
         "file-url": "^2.0.2",
         "puppeteer": "^1.13.0",
@@ -48,6 +50,3 @@
         "xml-parse": "^0.3.1"
     }
 }
-
-
-  
