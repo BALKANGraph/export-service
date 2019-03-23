@@ -1,3 +1,5 @@
+/logs/
 /node_modules/
 /appdata/
-/logs/
+
+/.vscode/
