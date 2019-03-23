@@ -9,7 +9,6 @@ const PADDING = 5;
 const http = require('http');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const fileUrl = require('file-url');
 const uuid = require('uuid');                              
 const xml = require("xml-parse");
 const {transports, createLogger, format} = require('winston');
@@ -29,19 +28,15 @@ const l = createLogger({
 });
 
 http.createServer(function (req, res) {
-    clear(res);
-    if(isGet(req, "/index.html")) {
-        servre(req, res);
-    }
-    else if(isPost(req, "/pdf")) {
+    clear(res);    
+    if(isPost(req, "/pdf")) {
         convert(req, res, "pdf");        
     }
     else if(isPost(req, "/png")) {
         convert(req, res, "png");        
     }
-    else {
-        res.writeHead(404);
-        res.end();
+    else  {
+        servre(req, res);
     }
 }).listen(port);
 
@@ -107,13 +102,20 @@ function servre(req, res) {
             res.end(ERROR);
             return;            
         }
-        res.writeHead(200);
+        if (req.url.indexOf(".svg") != -1) {
+            res.writeHead(200, {'content-type': 'image/svg+xml'});
+        }
+        else{
+            res.writeHead(200);
+        }
         res.end(data);
+
     });
 }
 
 function convert(req, res, type) {
     var body = "";
+    var href = "http://"+ req.headers.host;
     req.on('data', function(chunk) {
         body += chunk;
     });
@@ -136,6 +138,7 @@ function convert(req, res, type) {
             + "-" + d.getSeconds()
         
         var filenameSvg = `${APP_DATA}\\${d}+${filename}.svg`; 
+        var filenameSvgUrl = href + `/appdata/${d}+${filename}.svg`;
         var filenameConverted = `${APP_DATA}\\${d}+${filename}.${type}`; 
 
         fs.writeFile(filenameSvg, data.svg, function(err) {
@@ -146,11 +149,10 @@ function convert(req, res, type) {
                 return;
             }
             l.info(`${filenameSvg} file was saved; width: ${width}; height: ${height};`);
-            var fileurl = fileUrl(filenameSvg);
             (async () => {
                 const browser = await puppeteer.launch(puppeteerParams);
                 const page = await browser.newPage();
-                await page.goto(fileurl, { waitUntil: 'networkidle2' });
+                await page.goto(filenameSvgUrl, { waitUntil: 'networkidle2' });
                 if (type == "png"){
                     await page.screenshot({
                         path: filenameConverted,

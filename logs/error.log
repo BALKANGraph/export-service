@@ -1,0 +1,2 @@
+{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"open\",\"path\":\"c:\\\\GitHub\\\\export-service\\\\appdata\\\\7c4c44ec-c94c-4d10-998c-2a7b78e0d321.svg\"}","level":"error","timestamp":"2019-03-23T13:40:02.111Z"}
+{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"open\",\"path\":\"c:\\\\GitHub\\\\export-service\\\\appdata\\\\2c244be1-2f93-4de4-9d6f-dad3237c09b2.svg\"}","level":"error","timestamp":"2019-03-23T13:40:47.585Z"}
