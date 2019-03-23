@@ -1,5 +1,6 @@
 'use strict';
 var port = process.env.PORT || 1337;
+const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
 const APP_DATA = "appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
 const ONE_HOUR = 60 * 60 * 1000; /* ms */
@@ -147,7 +148,7 @@ function convert(req, res, type) {
             l.info(`${filenameSvg} file was saved; width: ${width}; height: ${height};`);
             var fileurl = fileUrl(filenameSvg);
             (async () => {
-                const browser = await puppeteer.launch();
+                const browser = await puppeteer.launch(puppeteerParams);
                 const page = await browser.newPage();
                 await page.goto(fileurl, { waitUntil: 'networkidle2' });
                 if (type == "png"){
