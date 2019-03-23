@@ -137,9 +137,9 @@ function convert(req, res, type) {
             + "-" + d.getMinutes()
             + "-" + d.getSeconds()
         
-        var filenameSvg = `${APP_DATA}\\${d}+${filename}.svg`; 
+        var filenameSvg = `${APP_DATA}/${d}+${filename}.svg`; 
         var filenameSvgUrl = href + `/appdata/${d}+${filename}.svg`;
-        var filenameConverted = `${APP_DATA}\\${d}+${filename}.${type}`; 
+        var filenameConverted = `${APP_DATA}/${d}+${filename}.${type}`; 
 
         fs.writeFile(filenameSvg, data.svg, function(err) {
             if(err) {

@@ -21,3 +21,22 @@
 {"message":"./appdata\\2019-2-23-15-44-15+4de84162-a0c1-4272-b628-5cb27ee2eee7.pdf file was converted;","level":"info","timestamp":"2019-03-23T13:44:17.138Z"}
 {"message":"./appdata\\2019-2-23-15-50-34+8ec2632d-7eef-4e57-b519-5f8c7254b57c.svg file was saved; width: 1185; height: 860;","level":"info","timestamp":"2019-03-23T13:50:34.986Z"}
 {"message":"./appdata\\2019-2-23-15-50-34+8ec2632d-7eef-4e57-b519-5f8c7254b57c.pdf file was converted;","level":"info","timestamp":"2019-03-23T13:50:39.570Z"}
+{"message":"file ./appdata/2019-2-23-15-20-58+c763632e-e30c-4cb4-8d3a-f47abc83deea.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.973Z"}
+{"message":"file ./appdata/2019-2-23-15-20-58+c763632e-e30c-4cb4-8d3a-f47abc83deea.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.975Z"}
+{"message":"file ./appdata/2019-2-23-15-24-13+802d7ca6-488d-42e8-8169-eb07e0bbb2ac.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.976Z"}
+{"message":"file ./appdata/2019-2-23-15-24-13+802d7ca6-488d-42e8-8169-eb07e0bbb2ac.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.977Z"}
+{"message":"file ./appdata/2019-2-23-15-24-50+82cbb86b-aa23-4265-9b8e-1af2f8b0d1c0.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.977Z"}
+{"message":"file ./appdata/2019-2-23-15-24-50+82cbb86b-aa23-4265-9b8e-1af2f8b0d1c0.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.978Z"}
+{"message":"file ./appdata/2019-2-23-15-38-14+8e979d56-1981-41ad-86da-e719183b9925.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.979Z"}
+{"message":"file ./appdata/2019-2-23-15-39-48+7c4c44ec-c94c-4d10-998c-2a7b78e0d321.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.979Z"}
+{"message":"file ./appdata/2019-2-23-15-39-48+7c4c44ec-c94c-4d10-998c-2a7b78e0d321.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.980Z"}
+{"message":"file ./appdata/2019-2-23-15-40-26+2c244be1-2f93-4de4-9d6f-dad3237c09b2.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.981Z"}
+{"message":"file ./appdata/2019-2-23-15-40-26+2c244be1-2f93-4de4-9d6f-dad3237c09b2.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.981Z"}
+{"message":"file ./appdata/2019-2-23-15-43-38+7b4c59aa-c049-404c-a28c-011777a12178.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.981Z"}
+{"message":"file ./appdata/2019-2-23-15-43-38+7b4c59aa-c049-404c-a28c-011777a12178.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.983Z"}
+{"message":"file ./appdata/2019-2-23-15-44-15+4de84162-a0c1-4272-b628-5cb27ee2eee7.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.984Z"}
+{"message":"file ./appdata/2019-2-23-15-44-15+4de84162-a0c1-4272-b628-5cb27ee2eee7.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.984Z"}
+{"message":"file ./appdata/2019-2-23-15-9-1+2b4d61a6-2071-4a45-8af8-e712cc6ec36e.pdf has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.985Z"}
+{"message":"file ./appdata/2019-2-23-15-9-1+2b4d61a6-2071-4a45-8af8-e712cc6ec36e.svg has been deleted!","level":"info","timestamp":"2019-03-23T14:48:37.987Z"}
+{"message":"./appdata/2019-2-23-16-48-39+70d0a3d7-2580-4d9d-ac6d-7a5e54387006.svg file was saved; width: 1185; height: 860;","level":"info","timestamp":"2019-03-23T14:48:39.961Z"}
+{"message":"./appdata/2019-2-23-16-48-39+70d0a3d7-2580-4d9d-ac6d-7a5e54387006.pdf file was converted;","level":"info","timestamp":"2019-03-23T14:48:43.705Z"}
