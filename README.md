@@ -17,7 +17,7 @@ node node_modules/balkangraph/export-service/app.js
 Open the following url in a browser:
 
 ```
-http://localhost/127.0.0.1:1337/index.html
+http://127.0.0.1:1337/index.html
 ```
 
 You should see:
@@ -26,6 +26,15 @@ You should see:
 
 If the installation is successful the test file should be exported
 
+## Usage
+
+Change exportUrl option to point to your export service server url
+```
+var chart = new OrgChart(document.getElementById("tree"), {
+    exportUrl: [Your URL]
+    ... 
+});
+```
 
 ## OS Specific
 

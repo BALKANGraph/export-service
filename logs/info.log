@@ -85,3 +85,6 @@
 {"message":"file C:\\GitHub\\export-service/appdata/2019-2-23-15-50-34+8ec2632d-7eef-4e57-b519-5f8c7254b57c.svg has been deleted!","level":"info","timestamp":"2019-03-23T16:21:36.298Z"}
 {"message":"C:\\GitHub\\export-service/appdata/2019-2-23-18-21-39+fb898906-c731-4481-b295-2717b54dbc43.svg file was saved; width: 1185; height: 860;","level":"info","timestamp":"2019-03-23T16:21:39.038Z"}
 {"message":"C:\\GitHub\\export-service/appdata/2019-2-23-18-21-39+fb898906-c731-4481-b295-2717b54dbc43.pdf file was converted;","level":"info","timestamp":"2019-03-23T16:21:44.079Z"}
+{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"open\",\"path\":\"C:\\\\GitHub\\\\export-service\\\\favicon.ico\"}","level":"error","timestamp":"2019-03-23T17:07:52.633Z"}
+{"message":"C:\\GitHub\\export-service/appdata/2019-2-23-19-7-56+5ae53c00-5e8e-461a-bcc4-edd377723bfe.svg file was saved; width: 1185; height: 860;","level":"info","timestamp":"2019-03-23T17:07:56.088Z"}
+{"message":"C:\\GitHub\\export-service/appdata/2019-2-23-19-7-56+5ae53c00-5e8e-461a-bcc4-edd377723bfe.pdf file was converted;","level":"info","timestamp":"2019-03-23T17:07:59.931Z"}
