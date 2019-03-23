@@ -21,9 +21,9 @@ const l = createLogger({
     ),
     transports: [
         new transports.Console(),
-        new transports.File({filename: 'logs\\error.log', level: 'error'}),
-        new transports.File({filename: 'logs\\debug.log', level: 'debug'}),
-        new transports.File({filename: 'logs\\info.log', level: 'info'})
+        new transports.File({filename: './logs/error.log', level: 'error'}),
+        new transports.File({filename: './logs/debug.log', level: 'debug'}),
+        new transports.File({filename: './logs/info.log', level: 'info'})
     ]
 });
 
@@ -74,7 +74,7 @@ function clear(res) {
             var d = new Date(dtarray[0], dtarray[1], dtarray[2], dtarray[3], dtarray[4], dtarray[5]);
             var now = new Date();
 
-            var filename = `${APP_DATA}\\${file}`;
+            var filename = `${APP_DATA}/${file}`;
 
             if (((now - d) < ONE_HOUR)){
                 l.debug(`file ${filename} is less then one hour old and will not be deleted!`);
