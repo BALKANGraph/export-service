@@ -1,5 +1,0 @@
-{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"unlink\",\"path\":\"C:\\\\appdata\\\\2019-2-23-15-50-34+8ec2632d-7eef-4e57-b519-5f8c7254b57c.pdf\"}","level":"error","timestamp":"2019-03-23T16:19:11.779Z"}
-{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"unlink\",\"path\":\"C:\\\\appdata\\\\2019-2-23-15-50-34+8ec2632d-7eef-4e57-b519-5f8c7254b57c.svg\"}","level":"error","timestamp":"2019-03-23T16:19:11.784Z"}
-{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"unlink\",\"path\":\"C:\\\\appdata\\\\2019-2-23-16-48-39+70d0a3d7-2580-4d9d-ac6d-7a5e54387006.pdf\"}","level":"error","timestamp":"2019-03-23T16:19:11.786Z"}
-{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"unlink\",\"path\":\"C:\\\\appdata\\\\2019-2-23-16-48-39+70d0a3d7-2580-4d9d-ac6d-7a5e54387006.svg\"}","level":"error","timestamp":"2019-03-23T16:19:11.788Z"}
-{"message":"{\"errno\":-4058,\"code\":\"ENOENT\",\"syscall\":\"open\",\"path\":\"C:\\\\GitHub\\\\export-service\\\\favicon.ico\"}","level":"error","timestamp":"2019-03-23T17:07:52.633Z"}
