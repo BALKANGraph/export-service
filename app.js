@@ -28,12 +28,25 @@ const l = createLogger({
 });
 
 http.createServer(function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    res.setHeader("Access-Control-Max-Age", "3600");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+	
     clear(res);    
     if(isPost(req, "/pdf")) {
         convert(req, res, "pdf");        
     }
+    else if(isOptions(req, "/pdf")) {
+        res.writeHead(200);
+        res.end();      
+    }
     else if(isPost(req, "/png")) {
         convert(req, res, "png");        
+    }
+    else if(isOptions(req, "/png")) {
+        res.writeHead(200);
+        res.end();      
     }
     else  {
         servre(req, res);
@@ -198,6 +211,11 @@ function isGet(req, path){
 function isPost(req, path){
     return (req.url == path && req.method.toLowerCase() == "post"); 
 }
+
+function isOptions(req, path){
+    return (req.url == path && req.method.toLowerCase() == "options"); 
+}
+
 
 process.on('uncaughtException', function(err) {    
     l.error(err.message);
