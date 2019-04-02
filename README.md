@@ -9,7 +9,7 @@ Install [nodejs](https://nodejs.org/en/download/)
 Execute the folloing command in the terminal (cmd):
 ```
 npm i @balkangraph/export-service
-node node_modules/balkangraph/export-service/app.js
+node node_modules/@balkangraph/export-service/app.js
 ```
 
 ## Test the Isntallation 
