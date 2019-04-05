@@ -32,9 +32,10 @@ http.createServer(function (req, res) {
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
     res.setHeader("Access-Control-Max-Age", "3600");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-	
+    
     clear(res);  
     if(isOptions(req)) {
+
         res.writeHead(200);
         res.end();      
     }  
@@ -120,12 +121,7 @@ function servre(req, res) {
         }
         res.end(data);
         return;  
-    });
-
-    l.info(`Cannot read file: ${fileName}`);
-    res.writeHead(404);
-    res.end(ERROR);
-    return;     
+    }); 
 }
 
 function convert(req, res, type) {
