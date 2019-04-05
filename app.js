@@ -104,9 +104,10 @@ function clear(res) {
 }
 
 function servre(req, res) {   
-    fs.readFile(__dirname + req.url, function (err, data) {
+    var fileName = __dirname + req.url;
+    fs.readFile(fileName, function (err, data) {
         if (err) {
-            l.error(JSON.stringify(err));
+            l.info(`Cannot read file: ${fileName}`);
             res.writeHead(404);
             res.end(ERROR);
             return;            
@@ -118,8 +119,13 @@ function servre(req, res) {
             res.writeHead(200);
         }
         res.end(data);
-
+        return;  
     });
+
+    l.info(`Cannot read file: ${fileName}`);
+    res.writeHead(404);
+    res.end(ERROR);
+    return;     
 }
 
 function convert(req, res, type) {
