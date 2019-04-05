@@ -3,7 +3,7 @@ var port = process.env.PORT || 1337;
 const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
 const APP_DATA = "/appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
-const ONE_HOUR = 60 * 60 * 1000; /* ms */
+const ONE_HOUR =  60 * 60 * 1000; /* ms */
 const PADDING = 5;
 
 const http = require('http');
@@ -33,20 +33,16 @@ http.createServer(function (req, res) {
     res.setHeader("Access-Control-Max-Age", "3600");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 	
-    clear(res);    
-    if(isPost(req, "/pdf")) {
-        convert(req, res, "pdf");        
-    }
-    else if(isOptions(req, "/pdf")) {
+    clear(res);  
+    if(isOptions(req)) {
         res.writeHead(200);
         res.end();      
+    }  
+    else if(isPost(req, "/pdf")) {
+        convert(req, res, "pdf");        
     }
     else if(isPost(req, "/png")) {
         convert(req, res, "png");        
-    }
-    else if(isOptions(req, "/png")) {
-        res.writeHead(200);
-        res.end();      
     }
     else  {
         servre(req, res);
@@ -213,7 +209,7 @@ function isPost(req, path){
 }
 
 function isOptions(req, path){
-    return (req.url == path && req.method.toLowerCase() == "options"); 
+    return (req.method.toLowerCase() == "options"); 
 }
 
 
