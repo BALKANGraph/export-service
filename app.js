@@ -1,5 +1,6 @@
 'use strict';
 var port = process.env.PORT || 1337;
+var virtualDirPath = process.env.virtualDirPath || "";
 const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
 const APP_DATA = "/appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
@@ -105,7 +106,7 @@ function clear(res) {
 }
 
 function servre(req, res) {   
-    var fileName = __dirname + req.url;
+    var fileName = __dirname + req.url.replace(virtualDirPath, "");
     fs.readFile(fileName, function (err, data) {
         if (err) {
             l.info(`Cannot read file: ${fileName}`);
@@ -126,7 +127,7 @@ function servre(req, res) {
 
 function convert(req, res, type) {
     var body = "";
-    var href = "http://"+ req.headers.host;
+    var href = "http://"+ req.headers.host + virtualDirPath;
     req.on('data', function(chunk) {
         body += chunk;
     });
@@ -148,9 +149,9 @@ function convert(req, res, type) {
             + "-" + d.getMinutes()
             + "-" + d.getSeconds()
         
-        var filenameSvg = `${__dirname}${APP_DATA}/${d}+${filename}.svg`; 
-        var filenameSvgUrl = href + `${APP_DATA}/${d}+${filename}.svg`;
-        var filenameConverted = `${__dirname}${APP_DATA}/${d}+${filename}.${type}`; 
+        var filenameSvg = `${__dirname}${APP_DATA}/${d}~${filename}.svg`; 
+        var filenameSvgUrl = href + `${APP_DATA}/${d}~${filename}.svg`;
+        var filenameConverted = `${__dirname}${APP_DATA}/${d}~${filename}.${type}`; 
 
         fs.writeFile(filenameSvg, data.svg, function(err) {
             if(err) {
@@ -202,12 +203,8 @@ function convert(req, res, type) {
     });
 }
 
-function isGet(req, path){
-    return (req.url == path && req.method.toLowerCase() == "get"); 
-}
-
 function isPost(req, path){
-    return (req.url == path && req.method.toLowerCase() == "post"); 
+    return (req.url == virtualDirPath + path && req.method.toLowerCase() == "post"); 
 }
 
 function isOptions(req, path){
