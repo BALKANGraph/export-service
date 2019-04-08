@@ -30,10 +30,10 @@ const l = createLogger({
     ]
 });
 
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '1mb'}));
 
 app.use(bodyParser.urlencoded({
-    limit: '50mb',
+    limit: '1mb',
     extended: true
 }));
 
@@ -121,6 +121,9 @@ function clear(res) {
 function convert(req, res, type) {
     var href = "http://"+ req.headers.host + virtualDirPath;
     l.debug(`req.headers.referer: ${req.headers.referer}`);
+    if (!req.body.svg){
+        l.debug("req.body.svg is empty");
+    }
 
     var parsedXML = xml.parse(req.body.svg);  
     var width = parsedXML[0].attributes.width;
