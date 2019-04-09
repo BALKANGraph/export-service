@@ -15,12 +15,13 @@ const fs = require('fs');
 const uuid = require('uuid');    
 const {transports, createLogger, format} = require('winston');
 const cors = require('cors');
+const open = require('open');
 
 const l = createLogger({
     level: "info",
     format: format.combine(
         format.timestamp(),
-        format.json()
+        format.simple()
     ),
     transports: [
         new transports.Console(),
@@ -30,12 +31,14 @@ const l = createLogger({
     ]
 });
 
+
+
 app.use(cors());
 
-app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.json({limit: '10mb'}));
 
 app.use(bodyParser.urlencoded({
-    limit: '1mb',
+    limit: '10mb',
     extended: true
 }));
 
@@ -43,17 +46,18 @@ app.listen(port, () => console.log(`Go to http://localhost:${port}/index.html`))
 
   
 app.get('*', function(req, res) {
+    clear();
     res.sendFile(path.join(__dirname + req.url.replace(virtualDirPath, "")));
 });
 
 app.post(virtualDirPath + '/pdf', function(req, res) {
-    convert(req, res, "pdf");
     clear();
+    convert(req, res, "pdf");
 });
 
 app.post(virtualDirPath + '/png', function(req, res) {
-    convert(req, res, "png");
     clear();
+    convert(req, res, "png");
 });
 
 app.options('*', function(req, res) {
@@ -228,3 +232,7 @@ process.on('uncaughtException', function(err) {
     l.error(err.stack);
 });
 
+
+(async () => {
+    await open(`http://localhost:${port}/index.html`, {wait: true});
+})();

@@ -16,7 +16,10 @@
             display: inline-block;
         }
 
-
+        #exportUrl{
+            font-size: 18px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;            
+        }
         input[type='button'] {
             box-sizing: border-box;
             border: none;
@@ -113,6 +116,9 @@
         };
 
         document.getElementById("pdfBtn").addEventListener("click", function () {
+            if (this.style.backgroundColor == "#cccccc") return;
+            document.getElementById("pdfBtn").style.backgroundColor = "#cccccc";
+            document.getElementById("pngBtn").style.backgroundColor = "#cccccc";
             var w = document.getElementById("w").value;
             var h = document.getElementById("h").value;
             var val = document.getElementById("svg").value;
@@ -124,11 +130,16 @@
                 div.innerHTML = val;
                 ajax("pdf", { filename: "filename.pdf", svg: div.innerHTML, size: { w: w, h: h }}, function (response) {
                     download("application/pdf", response, "filename.pdf");
+                    document.getElementById("pdfBtn").style.backgroundColor = "#039be5";
+                    document.getElementById("pngBtn").style.backgroundColor = "#F57C00";
                 });
             }
         });
 
         document.getElementById("pngBtn").addEventListener("click", function () {
+            if (this.style.backgroundColor == "#cccccc") return;
+            document.getElementById("pdfBtn").style.backgroundColor = "#cccccc";
+            document.getElementById("pngBtn").style.backgroundColor = "#cccccc";
             var w = document.getElementById("w").value;
             var h = document.getElementById("h").value;
             var val = document.getElementById("svg").value;
@@ -140,6 +151,8 @@
                 div.innerHTML = val;
                 ajax("png", { filename: "filename.png", svg: div.innerHTML, size: { w: w, h: h } }, function (response) {
                     download("image/png", response, "filename.png");
+                    document.getElementById("pdfBtn").style.backgroundColor = "#039be5";
+                    document.getElementById("pngBtn").style.backgroundColor = "#F57C00";
                 });
             }
         });
