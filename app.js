@@ -41,12 +41,6 @@ app.use(bodyParser.urlencoded({
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-    next();
-});
   
 app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + req.url.replace(virtualDirPath, "")));
@@ -62,7 +56,7 @@ app.post(virtualDirPath + '/png', function(req, res) {
     clear();
 });
 
-app.option('*', function(req, res) {
+app.options('*', function(req, res) {
     res.writeHead(200);
     res.end();
 });
