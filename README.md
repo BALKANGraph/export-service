@@ -38,13 +38,23 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 ## [VIDEO TUTORIAL](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
 
+=======================
+
 ## IIS Hosting
 
-IIS Hosting [Video](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
+#### Prerequisites 
+
+Install [URL rewrite module for IIS](https://www.iis.net/downloads/microsoft/url-rewrite)
+
+#### Installing for IIS 7.x/8.x
+
+Install iisnode for IIS 7.x/8.x: [x86](https://github.com/azure/iisnode/releases/download/v0.2.21/iisnode-full-v0.2.21-x86.msi) or [x64](https://github.com/azure/iisnode/releases/download/v0.2.21/iisnode-full-v0.2.21-x64.msi) - choose bitness matching your system
 
 
 
-## Linux OS Specific
+
+
+## OS Specific
 
 For CentOS 7 execute:
 
