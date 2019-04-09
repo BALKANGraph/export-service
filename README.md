@@ -38,7 +38,7 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 [VIDEO TUTORIAL](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
 
-If you are installing on Windows and want to host in IIS see [How to host nodejs app in IIS 7.x/8.x]
+If you are installing on Windows and want to host in IIS see [How to host nodejs app in IIS 7.x/8.x](https://github.com/BALKANGraph/export-service/blob/master/IISNODE.md)
 
 
 
