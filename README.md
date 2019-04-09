@@ -36,7 +36,8 @@ var chart = new OrgChart(document.getElementById("tree"), {
 });
 ```
 
-## OS Specific
+
+## Linux OS Specific
 
 For CentOS 7 execute:
 
