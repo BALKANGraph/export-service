@@ -48,12 +48,12 @@ var chart = new OrgChart(document.getElementById("tree"), {
 
 3. Make sure that your root folder for the nodejs apps (wwwnodes from the video tutorial) has read and write permissions for the IISUSER
 
-4. Add the following web config in *export-service* folder
+4. Create *web.config* file in *export-service* folder
 
 ```
 <configuration>
   <appSettings>
-    <add key="virtualDirPath" value="/export" />
+    <add key="virtualDirPath" value="" />
   </appSettings>
   <system.webServer>
     <httpProtocol>
@@ -84,7 +84,18 @@ var chart = new OrgChart(document.getElementById("tree"), {
 </configuration>
 ```
 
-=======================
+5. Create new Website or Application or Virtual Directory in IIS with physical path pointing to *export-service* folder. If you've created Application or Virtual Directory instead of Website add the name to the appSettings section in the web.config. For example if your Application name is *export* add:
+
+
+```
+<add key="virtualDirPath" value="/export" />
+```
+
+
+6. Request index.html from a browser and test the export service 
+
+7. Update *exportUrl* option in OrgChart JS with your end point for the export service
+
 
 ## OS Specific
 
