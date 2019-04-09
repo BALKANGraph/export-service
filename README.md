@@ -36,6 +36,13 @@ var chart = new OrgChart(document.getElementById("tree"), {
 });
 ```
 
+## Windows
+
+Intallation [Video](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
+
+IIS Hosting [Video](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
+
+
 
 ## Linux OS Specific
 
