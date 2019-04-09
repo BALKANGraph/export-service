@@ -1,4 +1,4 @@
-# How to host nodejs app in IIS 7.x/8.x
+## How to host nodejs app in IIS 7.x/8.x
 
 1. Install [URL rewrite module for IIS](https://www.iis.net/downloads/microsoft/url-rewrite)
 
