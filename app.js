@@ -14,6 +14,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const uuid = require('uuid');    
 const {transports, createLogger, format} = require('winston');
+const cors = require('cors');
 
 const l = createLogger({
     level: "info",
@@ -28,6 +29,8 @@ const l = createLogger({
         new transports.File({filename: './logs/info.log', level: 'info'})
     ]
 });
+
+app.use(cors());
 
 app.use(bodyParser.json({limit: '1mb'}));
 
@@ -57,6 +60,11 @@ app.post(virtualDirPath + '/pdf', function(req, res) {
 app.post(virtualDirPath + '/png', function(req, res) {
     convert(req, res, "png");
     clear();
+});
+
+app.option('*', function(req, res) {
+    res.writeHead(200);
+    res.end();
 });
 
 function clear(res) {  
