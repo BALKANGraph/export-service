@@ -39,6 +39,14 @@
         label{
             color: white;
         }
+
+        input[type="text"], label, textarea{
+            display: none;
+        }
+        #exportUrl{
+            color: white;
+        }
+        
      
     </style>
 </head>
@@ -49,12 +57,15 @@
                 <circle cx="33" cy="14" r="10" fill="#FFCA28"></circle>
                 <circle cx="30" cy="32" r="8" fill="#F57C00"></circle>
             </svg>
-            <br>
+
+            <br />
         <input id="pdfBtn" value="Test Export to PDF" type="button">
         <input id="pngBtn" value="Test Export to PNG" type="button"/>
-    
+        <br />
+        <div id="exportUrl"></div>
+        <br />
     <div id="img"></div>
-    <label for="w">width</label>
+    <label  for="w">width</label>
     <input id="w" type="text" value="1180" />
     
     <label for="h">height</label>
@@ -132,6 +143,12 @@
                 });
             }
         });
+
+        var eurl = document.getElementById("exportUrl");
+        var l = window.location;
+        
+        eurl.innerHTML =  "exportUrl: " +  l.protocol + "//" + l.host;
+        
     </script>
 </body>
 </html>

@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.listen(port, () => console.log(`Listening on port ${port}!`));
+app.listen(port, () => console.log(`Go to http://localhost:${port}/index.html`));
 
   
 app.get('*', function(req, res) {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>OrgChart JS - Export Service | BALKANGraph</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            font-family: Helvetica;
+        }
+
+        #tree {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
+    <div id="tree"></div>
+    <script>
+        var l = window.location;
+        var exportUrl = l.protocol + "//" + l.host;
+        console.log(exportUrl);
+        
+
+        var chart = new OrgChart(document.getElementById("tree"), {
+            exportUrl: exportUrl,
+            menu: {
+                pdf: { text: "Export PDF" },
+                png: { text: "Export PNG" },
+                svg: { text: "Export SVG" },
+                csv: { text: "Export CSV" }
+            },
+            nodeBinding: {
+                field_0: "name",
+                field_1: "title",
+                img_0: "img"
+            },
+            nodes: [
+                { id: 1, name: "Billy Moore", title: "CEO", img: "https://balkangraph.com/js/img/2.jpg" },
+                { id: 2, pid: 1, name: "Billie Rose", title: "Dev Team Lead", img: "https://balkangraph.com/js/img/5.jpg" },
+
+                { id: 3, pid: 1, name: "Glenn Bell", title: "HR", img: "https://balkangraph.com/js/img/10.jpg" },
+                { id: 4, pid: 3, name: "Blair Francis", title: "HR", img: "https://balkangraph.com/js/img/11.jpg" }
+            ]
+        });    
+    </script>
+</body>
+
+</html>
