@@ -12,8 +12,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const uuid = require('uuid');                              
-const xml = require("xml-parse");
+const uuid = require('uuid');    
 const {transports, createLogger, format} = require('winston');
 
 const l = createLogger({
@@ -121,15 +120,17 @@ function clear(res) {
 function convert(req, res, type) {
     var href = "http://"+ req.headers.host + virtualDirPath;
     l.debug(`req.headers.referer: ${req.headers.referer}`);
-    if (!req.body.svg){
-        l.debug("req.body.svg is empty");
+    
+
+    if (!req.body.size){
+        res.writeHead(400);
+        res.end("In your OrgChart JS version there is an issue with the export service, use verion 4.5.2 or above!");
+        return;
     }
 
-    var parsedXML = xml.parse(req.body.svg);  
-    var width = parsedXML[0].attributes.width;
-    var height = parsedXML[0].attributes.height;  
-    width = parseFloat(width) + PADDING;
-    height = parseFloat(height) + PADDING;
+    var width = parseFloat(req.body.size.w) + PADDING;
+    var height = parseFloat(req.body.size.h) + PADDING;
+    
     var filename = uuid.v4(); 
     var d = new Date();
 

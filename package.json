@@ -41,13 +41,12 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.1.7",
+    "version": "1.1.8",
     "dependencies": {
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
         "puppeteer": "^1.13.0",
         "uuid": "^3.3.2",
-        "winston": "^3.2.1",
-        "xml-parse": "^0.3.1"
+        "winston": "^3.2.1"
     }
 }
