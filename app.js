@@ -233,6 +233,6 @@ process.on('uncaughtException', function(err) {
 });
 
 
-(async () => {
-    await open(`http://localhost:${port}/index.html`, {wait: true});
-})();
+// (async () => {
+//     await open(`http://localhost:${port}/index.html`, {wait: true});
+// })();
