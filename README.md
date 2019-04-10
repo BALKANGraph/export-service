@@ -1,7 +1,7 @@
-# Export Service - OrgChart JS | BALKANGraph
+## Installation Instructions Export Service - OrgChart JS | BALKANGraph
 
 
-## Intsall
+#### Installation
 
 
 Install [nodejs](https://nodejs.org/en/download/)
@@ -12,7 +12,7 @@ npm i @balkangraph/export-service
 node node_modules/@balkangraph/export-service/app.js
 ```
 
-## Test the Isntallation 
+#### Test the Isntallation 
 
 Open the following url in a browser:
 
@@ -26,7 +26,7 @@ You should see:
 
 If the installation is successful the test file should be exported
 
-## Usage
+#### Usage
 
 Change exportUrl option to point to your export service server url
 ```
@@ -36,7 +36,14 @@ var chart = new OrgChart(document.getElementById("tree"), {
 });
 ```
 
-## OS Specific
+[VIDEO TUTORIAL](https://www.youtube.com/watch?v=0aoycuMtqNc&feature=youtu.be)
+
+If you are installing on Windows and want to host in IIS see [How to host nodejs app in IIS 7.x/8.x](https://github.com/BALKANGraph/export-service/blob/master/IISNODE.md)
+
+
+
+
+#### OS Specific
 
 For CentOS 7 execute:
 
