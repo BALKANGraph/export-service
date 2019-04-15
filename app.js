@@ -234,15 +234,7 @@ function v1(req, res) {
     var href = "http://"+ req.headers.host + virtualDirPath;
 
     var content =  req.body.content;
-    var extsource = 'svg';
-    if (req.body.options.format == "A4"){
-        var extraHtml = '';
-        if (req.body.options.extraHtml){
-            extraHtml = req.body.options.extraHtml;
-        }
-        content =  '<!DOCTYPE html><html><head></head><body>' + extraHtml + content +  '</body></html>';
-        extsource = 'html';
-    }
+    var extsource = 'html';
 
     var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
         
