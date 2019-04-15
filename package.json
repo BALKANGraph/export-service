@@ -8,6 +8,8 @@
     },
     "files": [
         "app.js",
+        "export1.js",
+        "util.js",
         "index.html",
         "package.json",
         "README.md"
@@ -41,10 +43,11 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.2.3",
+    "version": "1.2.4",
     "dependencies": {
         "body-parser": "^1.18.3",
         "cors": "^2.8.5",
+        "easy-pdf-merge": "^0.2.1",
         "express": "^4.16.4",
         "open": "^6.1.0",
         "puppeteer": "^1.13.0",

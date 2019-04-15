@@ -15,7 +15,8 @@ const fs = require('fs');
 const uuid = require('uuid');    
 const {transports, createLogger, format} = require('winston');
 const cors = require('cors');
-const open = require('open');
+const export1 = require('./export1.js');
+const util = require('./util.js');
 
 const l = createLogger({
     level: "info",
@@ -58,6 +59,10 @@ app.post(virtualDirPath + '/pdf', function(req, res) {
 app.post(virtualDirPath + '/png', function(req, res) {
     clear();
     convert(req, res, "png");
+});
+
+app.post(virtualDirPath + '/v1', function(req, res) {
+    v1(req, res);
 });
 
 app.options('*', function(req, res) {
@@ -225,6 +230,47 @@ function convert(req, res, type) {
     });         
 }
 
+function v1(req, res) {
+    var href = "http://"+ req.headers.host + virtualDirPath;
+
+    var content =  req.body.content;
+    var extsource = 'svg';
+    if (req.body.options.format == "A4"){
+        var extraHtml = '';
+        if (req.body.options.extraHtml){
+            extraHtml = req.body.options.extraHtml;
+        }
+        content =  '<!DOCTYPE html><html><head></head><body>' + extraHtml + content +  '</body></html>';
+        extsource = 'html';
+    }
+
+    var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
+        
+    fs.writeFile(path.sourcepath, content, function(err) {
+        if(err) {
+            error(res, err);
+            return;
+        }
+
+        export1(path, req.body.options, function(){
+            fs.readFile(path.targetpath, function (err, filedata) {
+                if (err) {
+                    error(res, err);
+                    return;                        
+                }
+                res.writeHead(200);
+                res.end(filedata);
+            });
+        });  
+    });   
+}
+
+function error(res, err){
+    l.error(JSON.stringify(err));
+    res.writeHead(404);
+    res.end(ERROR);
+}
+
 
 process.on('uncaughtException', function(err) {   
     l.debug(`uncaughtException`);
@@ -232,7 +278,3 @@ process.on('uncaughtException', function(err) {
     l.error(err.stack);
 });
 
-
-// (async () => {
-//     await open(`http://localhost:${port}/index.html`, {wait: true});
-// })();
