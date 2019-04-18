@@ -14,13 +14,6 @@
     <add key="virtualDirPath" value="" />
   </appSettings>
   <system.webServer>
-    <httpProtocol>
-      <customHeaders>
-        <add name="Access-Control-Allow-Origin" value="*" />
-        <add name="Access-Control-Allow-Methods" value="*" />
-        <add name="Access-Control-Allow-Headers" value="*" />
-      </customHeaders>
-    </httpProtocol>
     <security>
       <requestFiltering>
         <requestLimits maxAllowedContentLength="30000000" />
