@@ -13,7 +13,11 @@ const puppeteerParams = {
     args: ['--no-sandbox', '--disable-setuid-sandbox']
 };
 
-function export2(path, req, callback){    
+function export2(path, req, callback){  
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+ 
     util.delFiles(dir);
 
     var html = exportHtml(req.content, req.options, req.format);
@@ -39,7 +43,8 @@ function export2(path, req, callback){
             var marginBottom = req.options.margin[2];
             await page.evaluate((data) => {
                 var svg = document.querySelector('svg');
-                svg.setAttribute("viewBox", data.vb);                        
+                svg.setAttribute("viewBox", data.vb);    
+                document.documentElement.style.backgroundColor = svg.style.backgroundColor;
                 var bgheader = document.getElementById('bg-header');
                 var bgfooter = document.getElementById('bg-footer');                
                 bgheader.innerHTML = data.header;
