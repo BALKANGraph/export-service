@@ -158,9 +158,9 @@ function exportHtml(html, options, format){
     }
     return '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body style="margin:0; padding:0;">'
         + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + format.innerSize.w + 'px;height:' + (format.innerSize.h) + 'px">'
-        + '<div id="bg-header" style="position:absolute;left:' + options.margin[3] + 'px;"></div>'
+        + '<div id="bg-header" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
         + html
-        + '<div id="bg-footer" style="position:absolute;left:' + options.margin[3] + 'px;"></div>'
+        + '<div id="bg-footer" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
         +  '</div></body></html>';
 }
 
