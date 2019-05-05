@@ -9,6 +9,7 @@
     "files": [
         "app.js",
         "export1.js",
+        "export2.js",
         "util.js",
         "index.html",
         "package.json",
@@ -43,7 +44,7 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.2.6",
+    "version": "1.2.7",
     "dependencies": {
         "body-parser": "^1.18.3",
         "cors": "^2.8.5",
