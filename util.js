@@ -24,6 +24,16 @@ module.exports = {
         };
     },
 
+    pagePdfPath: function (dir, appdata) {        
+        var s = 1;
+        while (fs.existsSync(path.join(dir, appdata, `page_${s}.pdf`))){
+            s++;
+        }
+
+
+        return path.join(dir, appdata, `page_${s}.pdf`);
+    },
+
 
     delFiles: function (dir) {
         fs.readdirSync(dir).forEach(file => {

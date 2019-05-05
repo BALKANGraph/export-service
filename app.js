@@ -16,6 +16,7 @@ const uuid = require('uuid');
 const {transports, createLogger, format} = require('winston');
 const cors = require('cors');
 const export1 = require('./export1.js');
+const export2 = require('./export2.js');
 const util = require('./util.js');
 
 const l = createLogger({
@@ -64,6 +65,11 @@ app.post(virtualDirPath + '/png', function(req, res) {
 app.post(virtualDirPath + '/v1', function(req, res) {
     v1(req, res);
 });
+
+app.post(virtualDirPath + '/v2', function(req, res) {
+    v2(req, res);
+});
+
 
 app.options('*', function(req, res) {
     res.writeHead(200);
@@ -255,6 +261,25 @@ function v1(req, res) {
             });
         });  
     });   
+}
+
+function v2(req, res) {
+    var href = "http://"+ req.headers.host + virtualDirPath;
+
+    var extsource = 'html';
+
+    var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
+        
+    export2(path, req.body, function(){
+        fs.readFile(path.targetpath, function (err, filedata) {
+            if (err) {
+                error(res, err);
+                return;                        
+            }
+            res.writeHead(200);
+            res.end(filedata);
+        });
+    });  
 }
 
 function error(res, err){
