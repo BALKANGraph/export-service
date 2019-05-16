@@ -161,7 +161,9 @@ function exportHtml(html, options, format){
         + '<div id="bg-header" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
         + html
         + '<div id="bg-footer" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
-        +  '</div></body></html>';
+        +  '</div>' 
+        + '<div style="position: fixed; top: -100000px; left: -100000px;">' +  options.header + options.footer + '</div>'
+        + '</body></html>';
 }
 
 
