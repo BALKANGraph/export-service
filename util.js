@@ -20,7 +20,8 @@ module.exports = {
             sourcepath: path.join(dir, appdata, `${s}.${extsorce}`),
             targetpath: path.join(dir, appdata, `${t}.${exttarget}`),
             sourceurl: href + `${appdata}/${s}.${extsorce}`,
-            targeturl: href + `${appdata}/${t}.${exttarget}`
+            targeturl: href + `${appdata}/${t}.${exttarget}`,
+            href: href
         };
     },
 
@@ -32,6 +33,18 @@ module.exports = {
 
         
         return path.join(dir, appdata, `page_${s}.pdf`);
+    },
+
+    pageHtmlPath: function (dir, appdata, href) {        
+        var s = 1;
+        while (fs.existsSync(path.join(dir, appdata, `page_${s}.html`))){
+            s++;
+        }
+        
+        return { 
+            path: path.join(dir, appdata, `page_${s}.html`),
+            url: href + `/appdata/page_${s}.html`
+        };
     },
 
 

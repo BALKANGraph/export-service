@@ -17,6 +17,7 @@ const {transports, createLogger, format} = require('winston');
 const cors = require('cors');
 const export1 = require('./export1.js');
 const export2 = require('./export2.js');
+const export3 = require('./export3.js');
 const util = require('./util.js');
 
 const l = createLogger({
@@ -68,6 +69,10 @@ app.post(virtualDirPath + '/v1', function(req, res) {
 
 app.post(virtualDirPath + '/v2', function(req, res) {
     v2(req, res);
+});
+
+app.post(virtualDirPath + '/v3', function(req, res) {
+    v3(req, res);
 });
 
 
@@ -271,6 +276,26 @@ function v2(req, res) {
     var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
         
     export2(path, req.body, function(){
+        fs.readFile(path.targetpath, function (err, filedata) {
+            if (err) {
+                error(res, err);
+                return;                        
+            }
+            res.writeHead(200);
+            res.end(filedata);
+        });
+    });  
+}
+
+
+function v3(req, res) {
+    var href = "http://"+ req.headers.host + virtualDirPath;
+
+    var extsource = 'html';
+
+    var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
+        
+    export3(path, req.body, function(){
         fs.readFile(path.targetpath, function (err, filedata) {
             if (err) {
                 error(res, err);
