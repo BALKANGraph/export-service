@@ -70,12 +70,17 @@ function export3(path, req, callback){
                 }
 
                 var bgheader = document.getElementById('bg-header');
-                var bgfooter = document.getElementById('bg-footer');                
-                bgheader.innerHTML = data.header;
-                bgfooter.innerHTML = data.footer;
-                bgheader.style.top = (data.marginTop - bgheader.offsetHeight - 7) + 'px';
-                bgfooter.style.bottom = (data.marginBottom - bgfooter.offsetHeight - 7) + 'px';              
+                var bgfooter = document.getElementById('bg-footer'); 
                 
+                if (bgheader){
+                    var top = data.marginTop - bgheader.offsetHeight - 7;
+                    bgheader.style.top = top + 'px';
+                }          
+
+                if (bgfooter){
+                    var bottom = data.marginBottom - bgfooter.offsetHeight - 7;
+                    bgfooter.style.bottom = bottom + 'px';
+                }                
             }, {vb, header, footer, marginTop, marginBottom, backgroundColor});          
 
 
@@ -138,15 +143,25 @@ function exportHtml(html, options, w, h){
     for(var j = 0; j < options.margin.length; j++){
         smargin += (options.margin[j] + 'px ');
     }
-    return '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body style="margin:0; padding:0;">'
-        + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + w + 'px;height:' + (h) + 'px">'
-        + '<div id="bg-header" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
-        + html
-        + '<div id="bg-footer" style="color:#757575;position:absolute;left:' + options.margin[3] + 'px;"></div>'
-        +  '</div>' 
-        + '<div style="position: fixed; top: -100000px; left: -100000px;">' +  options.header + options.footer + '</div>'
-        + '</body></html>';
+    var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body style="margin:0; padding:0;">'
+        + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + w + 'px;height:' + (h) + 'px">';
+
+        if (options.header){
+            result += '<div id="bg-header" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;top:0;">' +  options.header + '</div>';
+        }
+
+        result += html;
+
+        if (options.footer){
+            result += '<div id="bg-footer" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;bottom:0;">' +  options.footer + '</div>';
+        }
+
+    result +=  '</div>';     
+    result += '</body></html>';
+
+    return result;
 }
+
 
 
 module.exports = export3;
