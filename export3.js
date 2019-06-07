@@ -43,7 +43,7 @@ function export3(path, req, callback){
     
             var content =  currentPage.html ? currentPage.html : req.content;
     
-            var html = exportHtml(content, req.options, currentPage.innerSize.w, currentPage.innerSize.h);
+            var html = exportHtml(content, req.options, currentPage.innerSize.w, currentPage.innerSize.h, header, footer);
 
             var htmlPath = util.pageHtmlPath(__dirname, dir, path.href);
     
@@ -138,7 +138,7 @@ function export3(path, req, callback){
 }
 
 
-function exportHtml(html, options, w, h){    
+function exportHtml(html, options, w, h, header, footer){    
     var smargin = '';
     for(var j = 0; j < options.margin.length; j++){
         smargin += (options.margin[j] + 'px ');
@@ -146,14 +146,14 @@ function exportHtml(html, options, w, h){
     var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body style="margin:0; padding:0;">'
         + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + w + 'px;height:' + (h) + 'px">';
 
-        if (options.header){
-            result += '<div id="bg-header" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;top:0;">' +  options.header + '</div>';
+        if (header){
+            result += '<div id="bg-header" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;top:0;">' +  header + '</div>';
         }
 
         result += html;
 
-        if (options.footer){
-            result += '<div id="bg-footer" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;bottom:0;">' +  options.footer + '</div>';
+        if (footer){
+            result += '<div id="bg-footer" style="width:' + w + 'px;color:#757575;position:absolute;left:' + options.margin[3] + 'px;bottom:0;">' +  footer + '</div>';
         }
 
     result +=  '</div>';     
