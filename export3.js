@@ -32,8 +32,20 @@ function export3(path, req, callback){
         for(var i = 0; i < req.pages.length; i++){
             var currentPage = req.pages[i];
             var vb = currentPage.vb;
-            var header = req.options.header.replace('{current-page}', i + 1).replace('{total-pages}', req.pages.length);
-            var footer = req.options.footer.replace('{current-page}', i + 1).replace('{total-pages}', req.pages.length);
+            var header = req.options.header;
+            var footer = req.options.footer;
+            if (currentPage.header){
+                header = currentPage.header;
+            }
+            if (header){
+                header = header.replace('{current-page}', i + 1).replace('{total-pages}', req.pages.length);
+            }
+            if (currentPage.footer){
+                footer = currentPage.footer;
+            }
+            if (footer){
+                footer = footer.replace('{current-page}', i + 1).replace('{total-pages}', req.pages.length);
+            } 
             var marginTop = req.options.margin[0];
             var marginBottom = req.options.margin[2];
             var backgroundColor = currentPage.backgroundColor;
