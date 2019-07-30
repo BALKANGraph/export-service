@@ -19,6 +19,7 @@ const export1 = require('./export1.js');
 const export2 = require('./export2.js');
 const export3 = require('./export3.js');
 const util = require('./util.js');
+const xml = require("xml-parse");
 
 const l = createLogger({
     level: "info",
@@ -145,8 +146,9 @@ function convert(req, res, type) {
     
 
     if (!req.body.size){
-        res.writeHead(400);
-        res.end("In your OrgChart JS version there is an issue with the export service, use verion 4.5.2 or above!");
+        v0(req, res, type);
+        // res.writeHead(400);
+        // res.end("In your OrgChart JS version there is an issue with the export service, use verion 4.5.2 or above!");
         return;
     }
 
@@ -240,6 +242,108 @@ function convert(req, res, type) {
         })();              
     });         
 }
+
+
+function v0(req, res, type) {
+    var href = "http://"+ req.headers.host + virtualDirPath;
+    l.debug(`req.headers.referer: ${req.headers.referer}`);
+    if (!req.body.svg){
+        l.debug("req.body.svg is empty");
+    }
+
+    var parsedXML = xml.parse(req.body.svg);  
+    var width = parsedXML[0].attributes.width;
+    var height = parsedXML[0].attributes.height;  
+    width = parseFloat(width) + PADDING;
+    height = parseFloat(height) + PADDING;
+    var filename = uuid.v4(); 
+    var d = new Date();
+
+    d = d.getFullYear() 
+        + "-" + d.getMonth()
+        + "-" + d.getDate()
+        + "-" + d.getHours()
+        + "-" + d.getMinutes()
+        + "-" + d.getSeconds()
+    
+    var filenameSvg = `${__dirname}${APP_DATA}/${d}~${filename}.svg`; 
+    var filenameSvgUrl = href + `${APP_DATA}/${d}~${filename}.svg`;
+    var filenameConverted = `${__dirname}${APP_DATA}/${d}~${filename}.${type}`; 
+    l.debug(`convert writeFile filenameSvg: ${filenameSvg}`);
+
+    fs.writeFile(filenameSvg, req.body.svg, function(err) {
+        if(err) {
+            l.debug(`convert writeFile err filenameSvg: ${filenameSvg}`);
+
+            l.error(JSON.stringify(err));
+            res.writeHead(404);
+            res.end(ERROR);
+            return;
+        }
+        l.debug(`convert success filenameSvg: ${filenameSvg}`);
+        l.info(`${filenameSvg} file was saved; width: ${width}; height: ${height};`);
+        (async () => {
+            const browser = await puppeteer.launch(puppeteerParams);
+            const page = await browser.newPage();
+            l.debug(`goto start filenameSvgUrl: ${filenameSvgUrl}`);
+            await page.goto(filenameSvgUrl, { waitUntil: 'networkidle2' });
+            l.debug(`goto end filenameSvgUrl: ${filenameSvgUrl}`);
+
+            if (type == "png"){
+                l.debug(`goto png page.screenshot start filenameConverted: ${filenameConverted}`);
+
+                await page.screenshot({
+                    path: filenameConverted,
+                    clip : {
+                        x      : 0,
+                        y      : 0,
+                        width  : width,
+                        height : height
+                    }
+                });
+                l.debug(`goto png page.screenshot end filenameConverted: ${filenameConverted}`);
+
+            }
+            else if (type == "pdf"){
+                l.debug(`goto pdf page.screenshot start filenameConverted: ${filenameConverted}`);
+
+                await page.pdf({
+                    path: filenameConverted,
+                    width: width,
+                    height: height,
+                    printBackground: true
+                });
+                l.debug(`goto pdf page.screenshot end filenameConverted: ${filenameConverted}`);
+
+            }
+            l.debug(`browser.close(); start filenameConverted: ${filenameConverted}`);
+
+            await browser.close();
+            l.debug(`browser.close(); end filenameConverted: ${filenameConverted}`);
+
+            l.debug(`convert readFile filenameConverted: ${filenameConverted}`);
+
+            fs.readFile(filenameConverted, function (err, filedata) {
+                if (err) {
+                    l.debug(`convert readFile err filenameConverted: ${filenameConverted}; err ${JSON.stringify(err)}`);
+                    l.error(JSON.stringify(err));
+                    res.writeHead(404);
+                    res.end(ERROR);
+                    return;                        
+                }
+                l.debug(`convert success readFile filenameConverted: ${filenameConverted}`);
+
+                l.info(`${filenameConverted} file was converted;`);
+                res.writeHead(200);
+
+                res.end(filedata);
+                l.debug(`convert success readFile filenameConverted: ${filenameConverted} end`);
+
+            });
+        })();              
+    });         
+}
+
 
 function v1(req, res) {
     var href = "http://"+ req.headers.host + virtualDirPath;
