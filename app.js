@@ -19,7 +19,6 @@ const export1 = require('./export1.js');
 const export2 = require('./export2.js');
 const export3 = require('./export3.js');
 const util = require('./util.js');
-const xml = require("xml-parse");
 
 const l = createLogger({
     level: "info",
@@ -251,9 +250,11 @@ function v0(req, res, type) {
         l.debug("req.body.svg is empty");
     }
 
-    var parsedXML = xml.parse(req.body.svg);  
-    var width = parsedXML[0].attributes.width;
-    var height = parsedXML[0].attributes.height;  
+    var matchW = req.body.svg.match(/width="([^"]+)"/)
+    var matchH = req.body.svg.match(/height="([^"]+)"/)
+
+    var width = matchW[1];
+    var height = matchH[1];
     width = parseFloat(width) + PADDING;
     height = parseFloat(height) + PADDING;
     var filename = uuid.v4(); 
