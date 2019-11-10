@@ -30,7 +30,8 @@
           <action type="Rewrite" url="app.js" />
         </rule>
       </rules>
-    </rewrite>
+    </rewrite>    
+    <iisnode enableXFF="true" nodeProcessCommandLine="C:\Program Files\nodejs\node.exe" />
   </system.webServer>
 </configuration>
 ```
