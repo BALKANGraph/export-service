@@ -140,7 +140,7 @@ function clear(res) {
 }
 
 function convert(req, res, type) {
-    var href = "http://"+ req.headers.host + virtualDirPath;
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
     l.debug(`req.headers.referer: ${req.headers.referer}`);
     
 
@@ -244,7 +244,7 @@ function convert(req, res, type) {
 
 
 function v0(req, res, type) {
-    var href = "http://"+ req.headers.host + virtualDirPath;
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
     l.debug(`req.headers.referer: ${req.headers.referer}`);
     if (!req.body.svg){
         l.debug("req.body.svg is empty");
@@ -347,7 +347,7 @@ function v0(req, res, type) {
 
 
 function v1(req, res) {
-    var href = "http://"+ req.headers.host + virtualDirPath;
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
 
     var content =  req.body.content;
     var extsource = 'html';
@@ -374,7 +374,7 @@ function v1(req, res) {
 }
 
 function v2(req, res) {
-    var href = "http://"+ req.headers.host + virtualDirPath;
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
 
     var extsource = 'html';
 
@@ -393,8 +393,8 @@ function v2(req, res) {
 }
 
 
-function v3(req, res) {
-    var href = "http://"+ req.headers.host + virtualDirPath;
+function v3(req, res) {    
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
 
     var extsource = 'html';
 
