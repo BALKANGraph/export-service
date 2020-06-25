@@ -55,7 +55,8 @@ function export3(path, req, callback){
     
             var content =  currentPage.html ? currentPage.html : req.content;
     
-            var html = exportHtml(content, req.options, currentPage.innerSize.w, currentPage.innerSize.h, header, footer);
+            var styles = req.styles ? req.styles : '';
+            var html = exportHtml(content + styles, req.options, currentPage.innerSize.w, currentPage.innerSize.h, header, footer);
 
             var htmlPath = util.pageHtmlPath(__dirname, dir, path.href);
     
