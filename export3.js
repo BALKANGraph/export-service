@@ -72,7 +72,7 @@ function export3(path, req, callback){
                     svg.setAttribute("viewBox", data.vb);    
                 }
 
-                if (mode){
+                if (data.mode){
                     document.documentElement.classList.add(mode);
                 }
                 if (svg && svg.style.backgroundColor){                                      
