@@ -45,7 +45,7 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.4.2",
+    "version": "1.4.3",
     "dependencies": {
         "body-parser": "^1.18.3",
         "cors": "^2.8.5",

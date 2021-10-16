@@ -73,7 +73,7 @@ function export3(path, req, callback){
                 }
 
                 if (data.mode){
-                    document.documentElement.classList.add(mode);
+                    document.documentElement.classList.add(data.mode);
                 }
                 if (svg && svg.style.backgroundColor){                                      
                     document.documentElement.style.backgroundColor = svg.style.backgroundColor;
