@@ -48,7 +48,6 @@ function export3(path, req, callback){
             } 
             var marginTop = req.options.margin[0];
             var marginBottom = req.options.margin[2];
-            var mode = req.options.mode;
             var backgroundColor = currentPage.backgroundColor;
             if (backgroundColor == undefined){
                 backgroundColor = '';
@@ -72,9 +71,6 @@ function export3(path, req, callback){
                     svg.setAttribute("viewBox", data.vb);    
                 }
 
-                if (data.mode){
-                    document.documentElement.classList.add(data.mode);
-                }
                 if (svg && svg.style.backgroundColor){                                      
                     document.documentElement.style.backgroundColor = svg.style.backgroundColor;
                 }
@@ -95,7 +91,7 @@ function export3(path, req, callback){
                     var bottom = data.marginBottom - bgfooter.offsetHeight - 7;
                     bgfooter.style.bottom = bottom + 'px';
                 }                
-            }, {vb, header, footer, marginTop, marginBottom, backgroundColor, mode});          
+            }, {vb, header, footer, marginTop, marginBottom, backgroundColor});          
 
 
             if (req.options.ext == "pdf"){                
@@ -158,7 +154,11 @@ function exportHtml(html, options, w, h, header, footer){
     for(var j = 0; j < options.margin.length; j++){
         smargin += (options.margin[j] + 'px ');
     }
-    var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body style="margin:0; padding:0;">'
+    var mode = '';
+    if (options.mode){
+        mode = options.mode;
+    }
+    var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body class="' + mode + '" style="margin:0; padding:0;">'
         + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + w + 'px;height:' + (h) + 'px">';
 
         if (header){
