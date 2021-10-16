@@ -78,9 +78,6 @@ function export3(path, req, callback){
                 if (svg && svg.style.backgroundColor){                                      
                     document.documentElement.style.backgroundColor = svg.style.backgroundColor;
                 }
-                else{
-                    document.documentElement.style.backgroundColor = '#fff';
-                }
 
                 if (data.backgroundColor){
                     document.documentElement.style.backgroundColor = data.backgroundColor;           
