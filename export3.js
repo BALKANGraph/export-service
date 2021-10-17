@@ -158,7 +158,7 @@ function exportHtml(html, options, w, h, header, footer){
     if (options.mode){
         mode = options.mode;
     }
-    var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body class="' + mode + '" style="margin:0; padding:0;">'
+    var result = '<!DOCTYPE html><html style="margin:0;padding:0;"><head></head><body class="export-service ' + mode + '" style="margin:0; padding:0;">'
         + '<div style="margin: ' + smargin  + ';overflow:hidden;width:' + w + 'px;height:' + (h) + 'px">';
 
         if (header){
