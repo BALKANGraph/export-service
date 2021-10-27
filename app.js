@@ -3,6 +3,7 @@ var port = process.env.PORT || 1337;
 var virtualDirPath = process.env.virtualDirPath || "";
 const express = require('express');
 const app = express();
+const router = express.Router();
 const puppeteerParams = {args: ['--no-sandbox', '--disable-setuid-sandbox']};
 const APP_DATA = "/appdata";
 const ERROR = "Aw Snap! Something bad has happened! See the logs!";
@@ -44,38 +45,40 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+app.use(virtualDirPath, router);
+
 app.listen(port, () => console.log(`Go to http://localhost:${port}/index.html`));
 
   
-app.get('*', function(req, res) {
+router.get('*', function(req, res) {
     clear();
     res.sendFile(path.join(__dirname + req.url.replace(virtualDirPath, "")));
 });
 
-app.post(virtualDirPath + '/pdf', function(req, res) {
+router.post('/pdf', function(req, res) {
     clear();
     convert(req, res, "pdf");
 });
 
-app.post(virtualDirPath + '/png', function(req, res) {
+router.post('/png', function(req, res) {
     clear();
     convert(req, res, "png");
 });
 
-app.post(virtualDirPath + '/v1', function(req, res) {
+router.post('/v1', function(req, res) {
     v1(req, res);
 });
 
-app.post(virtualDirPath + '/v2', function(req, res) {
+router.post('/v2', function(req, res) {
     v2(req, res);
 });
 
-app.post(virtualDirPath + '/v3', function(req, res) {
+router.post('/v3', function(req, res) {
     v3(req, res);
 });
 
 
-app.options('*', function(req, res) {
+router.options('*', function(req, res) {
     res.writeHead(200);
     res.end();
 });
