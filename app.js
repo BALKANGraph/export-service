@@ -9,7 +9,6 @@ const ERROR = "Aw Snap! Something bad has happened! See the logs!";
 const ONE_HOUR =  60 * 60 * 1000; /* ms */
 const PADDING = 5;
 const path = require('path');
-const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const uuid = require('uuid');    
@@ -38,9 +37,9 @@ const l = createLogger({
 
 app.use(cors());
 
-app.use(bodyParser.json({limit: '10mb'}));
+app.use(express.json({limit: '10mb'}));
 
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
     limit: '10mb',
     extended: true
 }));

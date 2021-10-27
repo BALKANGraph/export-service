@@ -47,7 +47,6 @@
     },
     "version": "1.4.5",
     "dependencies": {
-        "body-parser": "^1.18.3",
         "cors": "^2.8.5",
         "easy-pdf-merge": "^0.2.1",
         "express": "^4.16.4",
