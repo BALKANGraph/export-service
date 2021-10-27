@@ -48,11 +48,11 @@
     "version": "1.4.5",
     "dependencies": {
         "cors": "^2.8.5",
-        "easy-pdf-merge": "^0.2.1",
-        "express": "^4.16.4",
-        "open": "^6.1.0",
-        "puppeteer": "^1.13.0",
-        "uuid": "^3.3.2",
+        "easy-pdf-merge": "^0.2.6",
+        "express": "^4.17.1",
+        "open": "^8.4.0",
+        "puppeteer": "^10.4.0",
+        "uuid": "^8.3.2",
         "winston": "^3.2.1"
     }
 }
