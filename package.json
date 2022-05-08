@@ -49,10 +49,10 @@
     "dependencies": {
         "cors": "^2.8.5",
         "easy-pdf-merge": "^0.2.6",
-        "express": "^4.17.1",
+        "express": "^4.18.1",
         "open": "^8.4.0",
-        "puppeteer": "^10.4.0",
+        "puppeteer": "^13.7.0",
         "uuid": "^8.3.2",
-        "winston": "^3.2.1"
+        "winston": "^3.7.2"
     }
 }
