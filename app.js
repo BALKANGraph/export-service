@@ -37,6 +37,7 @@ const l = createLogger({
 
 
 app.use(cors());
+app.enable('trust proxy');
 
 app.use(express.json({limit: '10mb'}));
 
