@@ -115,13 +115,13 @@ function export3(path, req, callback){
                 await page.screenshot({
                     path: path.targetpath,
                     printBackground: true,
-                    fullPage: true
-                    // clip : {
-                    //     x      : 0,
-                    //     y      : 0,
-                    //     width  : parseFloat(currentPage.size.w),
-                    //     height :  parseFloat(currentPage.size.h)
-                    // },
+                    //fullPage: true
+                    clip : {
+                        x      : 0,
+                        y      : 0,
+                        width  : parseFloat(currentPage.size.w),
+                        height :  parseFloat(currentPage.size.h)
+                    }
                 });  
             }
         };
