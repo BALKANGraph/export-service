@@ -101,6 +101,7 @@ function export3(path, req, callback){
                     printBackground: true,
                     path: pagepath,
                     pageRanges: '1',
+                    timeout: 180000, //3 minutes timeout
                     margin: {
                         top: 0,
                         bottom: 0,
@@ -115,6 +116,7 @@ function export3(path, req, callback){
                 await page.screenshot({
                     path: path.targetpath,
                     printBackground: true,
+                    timeout: 180000,
                     //fullPage: true
                     clip : {
                         x      : 0,
