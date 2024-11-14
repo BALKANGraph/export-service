@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const ONE_HOUR = 3600000;
+const { v4: uuidv4 } = require('uuid');
 
 
 module.exports = {
@@ -26,24 +27,17 @@ module.exports = {
     },
 
     pagePdfPath: function (dir, appdata) {        
-        var s = 1;
-        while (fs.existsSync(path.join(dir, appdata, `page_${s}.pdf`))){
-            s++;
-        }
-
+        var guid = uuidv4();
         
-        return path.join(dir, appdata, `page_${s}.pdf`);
+        return path.join(dir, appdata, `${guid}.pdf`);
     },
 
     pageHtmlPath: function (dir, appdata, href) {        
-        var s = 1;
-        while (fs.existsSync(path.join(dir, appdata, `page_${s}.html`))){
-            s++;
-        }
-        
+        var guid = uuidv4();
+
         return { 
-            path: path.join(dir, appdata, `page_${s}.html`),
-            url: href + `/appdata/page_${s}.html`
+            path: path.join(dir, appdata, `${guid}.html`),
+            url: href + `/appdata/${guid}.html`
         };
     },
 

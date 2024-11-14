@@ -45,11 +45,11 @@
         "type": "git",
         "url": "https://github.com/BALKANGraph/export-service"
     },
-    "version": "1.4.8",
+    "version": "1.4.9",
     "dependencies": {
         "cors": "^2.8.5",
         "easy-pdf-merge": "^0.2.6",
-        "express": "^4.17.1",
+        "express": "^4.21.1",
         "open": "^8.4.0",
         "puppeteer": "^10.4.0",
         "uuid": "^8.3.2",
