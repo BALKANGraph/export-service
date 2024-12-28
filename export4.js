@@ -28,9 +28,16 @@ function export4(path, bodies, callback){
 
         
         var pagesForMerge = [];
+        var currentPageIndex = 0;
+
+        var totalPagesCount = 0;
+        for(var body of bodies){
+            totalPagesCount += body.pages.length;
+        }
 
         for(var body of bodies){
             for(var i = 0; i < body.pages.length; i++){
+                currentPageIndex++;
                 var currentPage = body.pages[i];
                 var vb = currentPage.vb;
                 var header = body.options.header;
@@ -39,13 +46,13 @@ function export4(path, bodies, callback){
                     header = currentPage.header;
                 }
                 if (header){
-                    header = header.replace('{current-page}', i + 1).replace('{total-pages}', body.pages.length);
+                    header = header.replace('{current-page}', currentPageIndex).replace('{total-pages}', totalPagesCount);
                 }
                 if (currentPage.footer){
                     footer = currentPage.footer;
                 }
                 if (footer){
-                    footer = footer.replace('{current-page}', i + 1).replace('{total-pages}', body.pages.length);
+                    footer = footer.replace('{current-page}', currentPageIndex).replace('{total-pages}', totalPagesCount);
                 } 
                 var marginTop = body.options.margin[0];
                 var marginBottom = body.options.margin[2];
