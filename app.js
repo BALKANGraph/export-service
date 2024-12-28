@@ -18,6 +18,7 @@ const cors = require('cors');
 const export1 = require('./export1.js');
 const export2 = require('./export2.js');
 const export3 = require('./export3.js');
+const export4 = require('./export4.js');
 const util = require('./util.js');
 
 const l = createLogger({
@@ -78,6 +79,9 @@ router.post('/v3', function(req, res) {
     v3(req, res);
 });
 
+router.post('/v4', function(req, res) {
+    v4(req, res);
+});
 
 router.options('*', function(req, res) {
     res.writeHead(200);
@@ -404,6 +408,33 @@ function v3(req, res) {
     var path = util.newPath(__dirname, href, APP_DATA, extsource, req.body.options.ext);
         
     export3(path, req.body, function(){
+        fs.readFile(path.targetpath, function (err, filedata) {
+            if (err) {
+                error(res, err);
+                return;                        
+            }
+            res.writeHead(200);
+            res.end(filedata);
+        });
+    });  
+}
+
+function v4(req, res) {    
+    var href = req.protocol + "://"+ req.headers.host + virtualDirPath;
+
+    var extsource = 'html';
+
+    var bodies = null;
+    if (Array.isArray(req.body)){
+        bodies = req.body;
+    }
+    else{
+        bodies = [req.body];
+    }
+
+    var path = util.newPath(__dirname, href, APP_DATA, extsource, bodies[0].options.ext);
+        
+    export4(path, bodies, function(){
         fs.readFile(path.targetpath, function (err, filedata) {
             if (err) {
                 error(res, err);
